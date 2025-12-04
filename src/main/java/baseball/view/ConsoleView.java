@@ -2,11 +2,14 @@ package baseball.view;
 
 import baseball.constant.GameState;
 import baseball.domain.GameResult;
+import baseball.domain.UserAnswer;
+import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleView implements View {
     @Override
-    public String readNumber() {
-        return "";
+    public UserAnswer readNumber() {
+        System.out.print("숫자를 입력해주세요 : ");
+        return new UserAnswer(Console.readLine());
     }
 
     @Override

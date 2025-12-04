@@ -13,7 +13,7 @@ public class AnswerNumberGeneratorImpl implements AnswerNumberGenerator {
         List<Character> answer = new ArrayList<>();
         Set<Character> answerSet = new HashSet<>();
 
-        while (answerSet.size() < MAX_BASEBALL_NUMBER) {
+        while (answerSet.size() < ANSWER_LENGTH) {
             char numChar = pickNumChar();
             if (answerSet.contains(numChar)) {
                 continue;

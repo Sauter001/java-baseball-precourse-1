@@ -1,5 +1,6 @@
 package baseball.engine;
 
+import baseball.domain.UserAnswer;
 import baseball.view.View;
 
 public class GameEngine {
@@ -16,6 +17,9 @@ public class GameEngine {
             if (gameManager.isGameOver()) {
                 return;
             }
+
+            UserAnswer userAnswer = view.readNumber();
+
         }
     }
 }
