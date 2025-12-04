@@ -57,7 +57,7 @@ public class UserAnswer {
 
     private void validateLength(String answer) {
         if (answer.length() != GameConstant.ANSWER_LENGTH) {
-            throw new GameException(ErrorMessage.INVALID_INPUT_LENGTH.getMessage());
+            throw new GameException(ErrorMessage.INVALID_INPUT_LENGTH);
         }
     }
 
@@ -65,7 +65,7 @@ public class UserAnswer {
         try {
             Integer.parseInt(answer);
         } catch (NumberFormatException e) {
-            throw new GameException(ErrorMessage.INVALID_INPUT_NOT_NUMBER.getMessage());
+            throw new GameException(ErrorMessage.INVALID_INPUT_NOT_NUMBER);
         }
     }
 
@@ -73,7 +73,7 @@ public class UserAnswer {
         for (char c : answer.toCharArray()) {
             int num = Character.getNumericValue(c);
             if (num < GameConstant.MIN_BASEBALL_NUMBER || num > GameConstant.MAX_BASEBALL_NUMBER) {
-                throw new GameException(ErrorMessage.INVALID_INPUT_OUT_OF_RANGE.getMessage());
+                throw new GameException(ErrorMessage.INVALID_INPUT_OUT_OF_RANGE);
             }
         }
     }
@@ -82,7 +82,7 @@ public class UserAnswer {
         Set<Character> uniqueChars = new HashSet<>();
         for (char c : answer.toCharArray()) {
             if (!uniqueChars.add(c)) {
-                throw new GameException(ErrorMessage.INVALID_INPUT_DUPLICATE.getMessage());
+                throw new GameException(ErrorMessage.INVALID_INPUT_DUPLICATE);
             }
         }
     }

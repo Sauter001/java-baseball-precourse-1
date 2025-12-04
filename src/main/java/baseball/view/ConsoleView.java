@@ -4,6 +4,8 @@ import baseball.constant.BaseballJudgement;
 import baseball.constant.GameState;
 import baseball.domain.GameResult;
 import baseball.domain.UserAnswer;
+import baseball.exception.ErrorMessage;
+import baseball.exception.GameException;
 import camp.nextstep.edu.missionutils.Console;
 
 public class ConsoleView implements View {
@@ -68,10 +70,18 @@ public class ConsoleView implements View {
     public GameState readGameContinue() {
         System.out.println(GAME_CONTINUE_PROMPT);
         String input = Console.readLine();
+        return parseGameState(input);
+    }
 
+    private GameState parseGameState(String input) {
         if (GameState.START.equalsInput(input)) {
             return GameState.START;
         }
-        return GameState.END;
+        if (GameState.END.equalsInput(input)) {
+            return GameState.END;
+        }
+        throw new GameException(
+                ErrorMessage.INVALID_GAME_CONTINUE_INPUT
+        );
     }
 }
