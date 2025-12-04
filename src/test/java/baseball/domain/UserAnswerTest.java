@@ -157,7 +157,7 @@ class UserAnswerTest {
         //   List<Character> userDigits = userAnswer.getDigits(); // getter
         //   // 외부에서 비교 로직 수행
         //
-        // Good (Tell): ✅ 현재 구현
+        // Good (Tell): 현재 구현
         //   GameResult result = userAnswer.compareWith(correctAnswer);
         //   // UserAnswer가 스스로 비교 수행
 

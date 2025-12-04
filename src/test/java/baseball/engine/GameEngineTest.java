@@ -121,20 +121,6 @@ class GameEngineTest {
     @Test
     @DisplayName("View 모킹 덕분에 I/O 없이 순수 로직만 빠르게 테스트 가능")
     void View_모킹의_장점_어필() {
-        // 이 테스트는 View 인터페이스 분리의 가치를 보여줍니다.
-        //
-        // 만약 View 인터페이스가 없었다면:
-        // - GameEngine이 직접 System.in/out에 의존
-        // - 테스트 시 실제 콘솔 입력이 필요
-        // - 자동화된 테스트 불가능
-        // - 특정 시나리오 재현 어려움
-        //
-        // View 인터페이스 덕분에:
-        // ✅ MockView로 입력/출력 완전 제어
-        // ✅ 예측 가능한 테스트 시나리오 구성
-        // ✅ 출력 검증을 통한 비즈니스 로직 검증
-        // ✅ I/O 없이 밀리초 단위 빠른 실행
-
         // given
         MockAnswerNumberGenerator generator = new MockAnswerNumberGenerator("246");
         GameManager gameManager = new GameManager(generator);
