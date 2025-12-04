@@ -1,6 +1,8 @@
 package baseball.engine;
 
 import baseball.constant.GameState;
+import baseball.domain.GameResult;
+import baseball.domain.UserAnswer;
 import baseball.domain.generator.AnswerNumberGenerator;
 
 import java.util.List;
@@ -16,8 +18,12 @@ public class GameManager {
         this.currentGameState = GameState.START;
     }
 
-    public void pickNewAnswer() {
+    public void startNewGame() {
         this.answer = this.answerGenerator.generate();
+    }
+
+    public GameResult judgeAnswer(UserAnswer userAnswer) {
+        return userAnswer.compareWith(answer);
     }
 
     public void changeStateTo(GameState gameState) {

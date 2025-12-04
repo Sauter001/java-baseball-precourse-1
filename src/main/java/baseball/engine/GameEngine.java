@@ -1,5 +1,7 @@
 package baseball.engine;
 
+import baseball.constant.GameState;
+import baseball.domain.GameResult;
 import baseball.domain.UserAnswer;
 import baseball.view.View;
 
@@ -13,13 +15,30 @@ public class GameEngine {
     }
 
     public void run() {
-        while (true) {
-            if (gameManager.isGameOver()) {
-                return;
-            }
+        gameManager.startNewGame();
 
-            UserAnswer userAnswer = view.readNumber();
+        while (!gameManager.isGameOver()) {
+            playRound();
+        }
+    }
 
+    private void playRound() {
+        UserAnswer userAnswer = view.readNumber();
+        GameResult result = gameManager.judgeAnswer(userAnswer);
+        view.displayResult(result);
+
+        if (result.isGameClear()) {
+            handleGameClear();
+        }
+    }
+
+    private void handleGameClear() {
+        view.displayGameClear();
+        GameState nextState = view.readGameContinue();
+        gameManager.changeStateTo(nextState);
+
+        if (nextState == GameState.START) {
+            gameManager.startNewGame();
         }
     }
 }
